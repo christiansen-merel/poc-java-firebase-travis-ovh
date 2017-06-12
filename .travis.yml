@@ -4,6 +4,8 @@ env:
 language: java
 dist: trusty
 jdk: openjdk8
+addons:
+  ssh_known_hosts: vivatech.otakeh.com
 before_install:
 - sudo apt-get install sshpass openssh-client
 - cd sb
