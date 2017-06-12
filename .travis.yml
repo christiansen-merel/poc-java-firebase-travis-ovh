@@ -5,12 +5,12 @@ language: java
 dist: trusty
 jdk: openjdk8
 before_install:
-- sudo apt-get install sshpass
+- sudo apt-get install sshpass openssh-client
 - cd sb
 script: ./mvnw package
 deploy:
   skip_cleanup: true
   provider: script
   script:
-  - sshpass -e scp target/sb.jar icme1530@vivatech.otakeh.com:~/
-  - sshpass -e ssh icme1530@vivatech.otakeh.com "nohup java -jar sb.jar"
+  - sshpass -e scp -v target/sb.jar icme1530@vivatech.otakeh.com:~/
+  - sshpass -e ssh -v icme1530@vivatech.otakeh.com "nohup java -jar sb.jar"
