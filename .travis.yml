@@ -1,9 +1,16 @@
+env:
+  global:
+    secure: r7k+ycKEyTDOntdS6UO6VAfUkDbWprEynlWtJKsOdwFTLgN8MnEBVHVUjcbsEKtRnL242n7GhD8nkApU2cXtq2ZUMRZzXfVSmPss2f9ZUi3zR6Rrc21kgtZRo98yuUDS6j/Df0zUOlMaqskRip3/ZlUNuWKMjnDisA4E3NRwmWZXCZJiPxYLy52akXu7qctRASalGNfn3Ne/8/reiOSQJiqmORaRYkB4bNWCbK4nB0GlBZk2iFytzycNrRr8RSnY19TzVPeKBqCUzd9uROBZuGGQ61nYyS61PrrzwrnV6czywaJ6MKp8VGl13/dqPZsTQw/wDDCCkg6psoGbZq9bCp1hO/VCXqGtCt5H6JlWsBqAOXiaNhKG93/bjPmug5EPWHZWBpaGoQCECKoPSmoKoPLepZCHJ1WwUQqfcbPISau9GVi++f+d77/CM/bfcJtSv+91rnIRMX37zsQl7Kxhj4P5cj/k/loxPNhJbile7EGdmvzD4hF0yLmb9nYGh7bHIysLCJ8DzduNUmsYvD4o3Hj3fC1EfLJv0RH2E8CqCT1GmbM+AXN3ZOAgW2qkwc7LaILRvoAsR8DRad4vlFDyVT47JyNF6r9+95T5oLHc6DEKmzwmyxMVjNvyO48IUDbsbGD5UhuBwM51NdPRskLxR9OUrgVDIQoazx5fYypRAr0=
 language: java
 dist: trusty
 jdk: openjdk8
-before_install: cd sb
+before_install:
+- sudo apt-get install sshpass
+- cd sb
 script: ./mvnw package
 deploy:
+  skip_cleanup: true
   provider: script
-  script: 
-    - pwd
+  script:
+  - pwd
+  - sshpass $PASS scp target/sb.jar icme1530@vivatech.otakeh.com:~/
