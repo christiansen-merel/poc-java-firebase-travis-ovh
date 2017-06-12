@@ -2,3 +2,8 @@ language: java
 dist: trusty
 jdk: openjdk8
 before_install: cd sb
+script: ./mvnw package
+deploy:
+  provider: script
+  script: 
+    - pwd
