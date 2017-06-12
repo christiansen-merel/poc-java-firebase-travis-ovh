@@ -13,4 +13,4 @@ script: ./mvnw package
 deploy:
   skip_cleanup: true
   provider: script
-  script: deploy.sh
+  script: "./deploy.sh"
