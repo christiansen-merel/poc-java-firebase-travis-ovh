@@ -8,7 +8,7 @@ addons:
   ssh_known_hosts: vivatech.otakeh.com
 before_install:
 - sudo apt-get install sshpass openssh-client
-script: "sshpass -e ssh icme1530@vivatech.otakeh.com ~/build.sh"
+script: "sshpass -e ssh icme1530@vivatech.otakeh.com ./build.sh"
 deploy:
   provider: script
-  script: "sshpass -e ssh icme1530@vivatech.otakeh.com ~/deploy.sh"
+  script: "sshpass -e ssh icme1530@vivatech.otakeh.com ./deploy.sh"
