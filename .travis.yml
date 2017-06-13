@@ -8,9 +8,7 @@ addons:
   ssh_known_hosts: vivatech.otakeh.com
 before_install:
 - sudo apt-get install sshpass openssh-client
-- cd sb
-script: ./mvnw package
+script: ./build.sh
 deploy:
-  skip_cleanup: true
   provider: script
-  script: "./deploy.sh"
+  script: ./deploy.sh
